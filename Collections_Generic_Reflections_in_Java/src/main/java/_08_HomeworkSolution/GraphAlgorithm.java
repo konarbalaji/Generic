@@ -1,4 +1,4 @@
-package _09_HomeworkSolution;
+package _08_HomeworkSolution;
 
 public class GraphAlgorithm implements Algorithm{
 
