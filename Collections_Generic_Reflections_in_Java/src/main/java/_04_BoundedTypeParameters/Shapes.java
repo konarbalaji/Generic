@@ -1,4 +1,4 @@
-package _02_BoundedTypeParameters;
+package _04_BoundedTypeParameters;
 
 
 import java.util.ArrayList;

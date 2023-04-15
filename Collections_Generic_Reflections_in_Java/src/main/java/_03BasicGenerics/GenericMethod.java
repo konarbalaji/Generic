@@ -1,4 +1,4 @@
-package _01BasicGenerics;
+package _03BasicGenerics;
 
 public class GenericMethod {
 

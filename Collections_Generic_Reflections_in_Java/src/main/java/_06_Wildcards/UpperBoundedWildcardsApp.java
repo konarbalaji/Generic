@@ -1,4 +1,4 @@
-package _02_BoundedTypeParameters;
+package _06_Wildcards;
 
 import java.util.ArrayList;
 import java.util.Arrays;

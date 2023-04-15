@@ -1,4 +1,4 @@
-package _02_BoundedTypeParameters;
+package _05_TypeInference;
 
 import java.util.ArrayList;
 import java.util.List;

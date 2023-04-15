@@ -1,4 +1,4 @@
-package _01BasicGenerics;
+package _03BasicGenerics;
 
 class StoreGeneric<T> {
 
