@@ -1,4 +1,6 @@
-package _10_Lists;
+package _11_Queues;
+
+import _10_Lists.Person;
 
 import java.util.PriorityQueue;
 import java.util.Queue;

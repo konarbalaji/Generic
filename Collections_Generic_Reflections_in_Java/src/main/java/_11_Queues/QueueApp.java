@@ -1,4 +1,4 @@
-package _10_Lists;
+package _11_Queues;
 
 import java.util.LinkedList;
 import java.util.Queue;
