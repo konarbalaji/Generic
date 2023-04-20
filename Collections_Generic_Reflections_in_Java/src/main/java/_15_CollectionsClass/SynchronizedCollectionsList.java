@@ -1,4 +1,4 @@
-package _14_SortingCollections;
+package _15_CollectionsClass;
 
 import java.util.ArrayList;
 import java.util.Collections;

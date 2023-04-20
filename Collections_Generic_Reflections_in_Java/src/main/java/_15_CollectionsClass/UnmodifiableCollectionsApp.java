@@ -1,4 +1,4 @@
-package _14_SortingCollections;
+package _15_CollectionsClass;
 
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
