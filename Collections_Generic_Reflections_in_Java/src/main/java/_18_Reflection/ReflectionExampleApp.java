@@ -17,6 +17,12 @@ public class ReflectionExampleApp {
         }
 
         System.out.println(personclass.getName());
+        checkVehicle(new Bus());
+        checkVehicle(new Car());
+    }
 
+    public static void checkVehicle(Vehicle vehicle){
+        Class c = vehicle.getClass();
+        System.out.println(c.getName());
     }
 }
