@@ -1,6 +1,8 @@
 package _18_Reflection;
 
 import java.io.Serializable;
+import java.lang.annotation.*;
+import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -15,13 +17,21 @@ public class Reflection1 {
         int i=0;
         for (Method m : met){
             m.setAccessible(true);
-//            System.out.println(++i + "-" + m.getName() + "-" +  m.getReturnType());
+            //System.out.println(++i + "-" + m.getName() + "-" +  m.getReturnType());
+            if(m.isAnnotationPresent(MyAnnotation.class))
+                System.out.println("Ann present on " + m.getName());
         }
 
         Class[] interfaces = per.getInterfaces();
 
-        for(Class c : interfaces)
-            System.out.println(c.getName());
+        for(Class c : interfaces){
+            //System.out.println(c.getName());
+        }
+
+       AnnotatedType[] anns = per.getAnnotatedInterfaces();
+        for (AnnotatedType a : anns)
+            System.out.println(" Hello " + a.getAnnotations().toString());
+
 
 
         /*Field[] fields = per.getDeclaredFields();
@@ -31,6 +41,12 @@ public class Reflection1 {
             System.out.println(f.getName());
         }*/
     }
+}
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+@interface MyAnnotation{
+    public String name();
 }
 
 class Person1 implements Comparable<Person>, Serializable {
@@ -54,6 +70,7 @@ class Person1 implements Comparable<Person>, Serializable {
         this.age = age;
     }
 
+    @MyAnnotation(name = "myann")
     private String returnName(){
         return this.name + " is the name";
     }
