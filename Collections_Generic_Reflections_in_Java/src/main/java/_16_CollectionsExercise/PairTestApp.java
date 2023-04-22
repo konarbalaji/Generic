@@ -3,6 +3,7 @@ package _16_CollectionsExercise;
 public class PairTestApp {
 
     public static void main(String[] args) {
+
         Cache c = new Cache();
 
         c.search("www.google.com");
@@ -14,6 +15,6 @@ public class PairTestApp {
         c.search("www.cbs.com");
         c.search("www.google.com");
 
-        c.showPairs();
+        c.showCache();
     }
 }

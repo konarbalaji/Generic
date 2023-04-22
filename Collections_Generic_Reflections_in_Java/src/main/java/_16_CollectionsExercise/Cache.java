@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cache {
 
-    private int CAPACITY = 5;
+    private int CAPACITY = 3;
     private List<Pair> cache;
 
     public Cache() {
@@ -27,15 +27,24 @@ public class Cache {
             cache.remove(searchedItem);
             cache.add(0,searchedItem);
         }else{
+
             Pair p = new Pair(url,"random content");
-            cache.add(0,p);
+
+            //we have to deal with capacity , so this is how we remove items from cache iif necessary
+            if(cache.size() >= CAPACITY)
+                cache.remove(cache.size()-1);
+
+            //we have to check whether is it the first item in the array
+            if(cache.size() == 0)
+                cache.add(p);
+            else
+                cache.add(0,p);
         }
     }
 
-    public void showPairs(){
-        for(int i=0; i<CAPACITY; i++){
-            System.out.println(cache.get(i));
+    public void showCache(){
+        for(Pair p : cache){
+            System.out.println(p);
         }
-
     }
 }
