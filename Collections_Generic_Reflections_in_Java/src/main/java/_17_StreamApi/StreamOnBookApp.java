@@ -1,9 +1,8 @@
 package _17_StreamApi;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamOnBookApp {
 
@@ -18,10 +17,32 @@ public class StreamOnBookApp {
         books.add(new Book("Death of Virgil", "Hermann Broch", 590, Type.NOVEL));
         books.add(new Book("The Stranger", "Albert Camus", 560, Type.NOVEL));
 
-        List<Book> filteredBooks = books.stream().filter(x -> x.getType().equals(Type.NOVEL)).collect(Collectors.toList());
+        List<String> filteredBooks = books.stream()
+                .filter(x -> x.getType().equals(Type.NOVEL))
+                .sorted(Comparator.comparing(Book::getPages))
+                .map(Book::getTitle)
+                .collect(Collectors.toList());
 
-//        filteredBooks.stream().forEach(System.out::println);
-        System.out.println(Arrays.toString(filteredBooks.toArray()));
+        //filteredBooks.stream().forEach(System.out::println);
+        //System.out.println(Arrays.toString(filteredBooks.toArray()));
+
+        //grouping by Type
+        Map<Type, List<Book>> booksByType = books.stream()
+                .collect(Collectors.groupingBy(Book::getType));
+
+        /*booksByType.entrySet().stream()
+                .forEach(System.out::println);*/
+
+        //finding 2 longest book in terms of number of pages
+        List<String> longBooks = books.stream()
+                                    .filter(x -> x.getPages()>500)
+                                    .limit(2)
+                                    .map(Book::getTitle)
+                                    .collect(Collectors.toList());
+
+        longBooks.stream().forEach(System.out::println);
+
+
 
     }
 }
