@@ -36,11 +36,25 @@ public class StreamOnBookApp {
         //finding 2 longest book in terms of number of pages
         List<String> longBooks = books.stream()
                                     .filter(x -> x.getPages()>500)
-                                    .limit(2)
                                     .map(Book::getTitle)
+                                    .limit(2)
                                     .collect(Collectors.toList());
 
-        longBooks.stream().forEach(System.out::println);
+//        longBooks.stream().forEach(System.out::println);
+
+        //Finding 2 longest books(with more than 500 pages)
+        //Short circuiting & loop fusion. Filter & Map are different operations , but they are merged into same pass(loop fusion)
+        //Short-circuiting : some operations don't need to process the whole stream to produce a result
+        //Here, we are looking for just 2 items - so the algorithm terminates after finding 2 items !!!
+        books.stream()
+                .filter(x -> {
+                    System.out.println("Filtering " + x.getTitle() + " with pages " + x.getPages());
+                    return x.getPages()>600;
+                }).map(x -> {
+                    System.out.println(">> SUCCCESS Mapping " + x.getTitle() + " with pages " + x.getPages());
+                    return x.getTitle();
+                }).limit(2)
+                .forEach(System.out::println);
 
 
 
